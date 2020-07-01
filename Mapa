@@ -1,0 +1,73 @@
+HTML
+
+<div id= "map"><div>
+
+CSS
+
+#map { height: 98vh; width: 100hw;}
+
+JS
+
+let map = L.map('map').setView([-0.224855, -78.5169719], 12);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+//Las coordenadas del estudiante y el instituto
+L.marker([-0.053394, -78.423949]).addTo(map)
+    .bindPopup('karina')
+    .openPopup();
+L.marker([-0.298549, -78.526138]).addTo(map)
+    .bindPopup('Israel')
+    .openPopup();
+L.marker([-0.297729, -78.535831]).addTo(map)
+    .bindPopup('Erick')
+    .openPopup();
+L.marker([-0.281091, -78.551235]).addTo(map)
+    .bindPopup('Joel')
+    .openPopup();
+L.marker([-0.108161, -78.525267]).addTo(map)
+    .bindPopup('Edison')
+    .openPopup();
+L.marker([-0.2376814,-78.4803202]).addTo(map)
+    .bindPopup('Fernanda')
+    .openPopup();
+L.marker([-0.318764, -78.572053]).addTo(map)
+    .bindPopup('Andres')
+    .openPopup();
+L.marker([-0.224873, -78.516894]).addTo(map)
+    .bindPopup('Instituto')
+    .openPopup();
+    
+//La linea que une  al estudiante con el instituto
+let latlngs = [
+    [[-0.053394, -78.423949],   //Karina
+    [-0.224873, -78.5168943]], 
+    [[-0.298549, -78.526138],   //Israel
+    [-0.224873, -78.5168943]],
+    [[-0.297729, -78.535831],   //Erick
+    [-0.224873, -78.5168943]],
+    [[-0.281091, -78.551235],   //Joel
+    [-0.224873, -78.5168943]],
+    [[-0.108161, -78.525267],   //Edison
+    [-0.224873, -78.5168943]],
+    [[-0.2376814,-78.4803202],   //Fernanda
+    [-0.224873, -78.5168943]],
+    [[-0.318764, -78.572053],   //Andres
+    [-0.224873, -78.5168943]]
+];
+let polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+map.fitBounds(polyline.getBounds());
+
+//La distancia  que se encuentr  de la ubicacion del estudiante al  instituto
+//let distancia = Math.sqrt(Math.pow(casaEstudiante-auxArray[0],2)+Math.pow(Instituto-auxArray[1],2))
+
+let distanciaKarinaInstituto = Math.sqrt(Math.pow(-0.053394+78.423949,2)+Math.pow(-0.224873+78.5168943,2))
+let distanciaIsraelInstituto = Math.sqrt(Math.pow(-0.298549+78.526138,2)+Math.pow(-0.224873+78.5168943,2))
+let distanciaErickInstituto = Math.sqrt(Math.pow(-0.297729+78.535831,2)+Math.pow(-0.224873+78.5168943,2))
+let distanciaJoelInstituto = Math.sqrt(Math.pow(-0.281091+78.551235,2)+Math.pow(-0.224873+78.5168943,2))
+let distanciaEdisonInstituto = Math.sqrt(Math.pow(-0.108161+78.525267,2)+Math.pow(-0.224873+78.5168943,2))
+let distanciaFernandaInstituto = Math.sqrt(Math.pow(-0.224873+78.5168943,2)+Math.pow(-0.224873+78.5168943,2))
+
+//comprobamos la distancia con console.log(distanciaEstudianteInstituto)
